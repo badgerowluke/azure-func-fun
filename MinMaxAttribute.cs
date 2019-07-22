@@ -2,7 +2,7 @@ using System;
 
 namespace func_swagger_test
 {
-        [AttributeUsage(AttributeTargets.Property, AllowMultiple=true, Inherited=true)]
+    [AttributeUsage(AttributeTargets.Property, AllowMultiple=true, Inherited=true)]
     internal sealed class MinMax :Attribute
     {
         public string Name { get; set; }
@@ -14,4 +14,5 @@ namespace func_swagger_test
         }        
         
     }
+
 }

@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.OpenApi;
+using Newtonsoft.Json.Serialization;
 
 namespace func_swagger_test
 {
@@ -23,11 +24,12 @@ namespace func_swagger_test
             var settings = new AppSettings();
             var filter = new RouteConstraintFilter();
             var helper = new DocumentHelper(filter);
+
             var document = new Document(helper);
             var result = await document.InitialiseDocument()
                                        .AddMetadata(settings.OpenApiInfo)
                                        .AddServer(req, "api")
-                                       .Build(Assembly.GetExecutingAssembly())
+                                       .Build(Assembly.GetExecutingAssembly(),new DefaultNamingStrategy())
                                        .RenderAsync(OpenApiSpecVersion.OpenApi2_0, OpenApiFormat.Json)
                                        .ConfigureAwait(false);
             var response = new ContentResult()
