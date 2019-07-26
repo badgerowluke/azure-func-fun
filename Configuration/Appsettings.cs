@@ -1,19 +1,27 @@
 using Aliencube.AzureFunctions.Extensions.Configuration.AppSettings;
+using Microsoft.Extensions.Configuration;
 using Microsoft.OpenApi.Models;
 
 namespace func_swagger_test
 {
-    public class AppSettings : AppSettingsBase
+    public interface IAppSettings
     {
-        public AppSettings()
+        OpenApiInfo OpenApiInfo { get; }
+        string SwaggerAuthKey { get; }
+
+    }
+    public class AppSettings : AppSettingsBase, IAppSettings
+    {
+
+        public AppSettings(IConfiguration config)
         {
 
             var openApiInfo = new OpenApiInfo();
-            openApiInfo.Description = "A demonstration of hooking up to funcs with AutoRest";// this.Config["OpenApi:Info:Description"];
-            openApiInfo.Version = "0.0.1";// this.Config["OpenApi:Info:Version"];
-            openApiInfo.Title = "a super snazzy title";//this.Config["OpenApi:Info:Title"]
-            this.OpenApiInfo = openApiInfo;
-            this.SwaggerAuthKey = this.Config["OpenApi:AuthKey"];
+            openApiInfo.Description = config["OpenApi_Info"];
+            openApiInfo.Version =  config["OpenApi_Version"];
+            openApiInfo.Title = config["OpenApi_Title"];
+            OpenApiInfo = openApiInfo;
+            SwaggerAuthKey = config["OpenApi_AuthKey"];
         }
         public OpenApiInfo OpenApiInfo { get; }
         public string SwaggerAuthKey { get; }

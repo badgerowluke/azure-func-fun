@@ -17,23 +17,23 @@ namespace func_swagger_test
 
     public class RenderSwaggerDoc
     {
-        private readonly AppSettings _settings;
-        public RenderSwaggerDoc()
+        private readonly IAppSettings _settings;
+        public RenderSwaggerDoc(IAppSettings settings)
         {
-            
+            _settings = settings;
         }
         [FunctionName(nameof(RenderSwaggerDoc))]
         [OpenApiIgnore]
         public async Task<IActionResult> RenderSwaggerDocument(
                 [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "swagger.json")] HttpRequest req)
         {
-            var settings = new AppSettings();
+
             var filter = new RouteConstraintFilter();
             var helper = new DocumentHelper(filter);
 
             var document = new Document(helper);
             var result = await document.InitialiseDocument()
-                                       .AddMetadata(settings.OpenApiInfo)
+                                       .AddMetadata(_settings.OpenApiInfo)
                                        .AddServer(req, "api")
                                        .Build(Assembly.GetExecutingAssembly(),new DefaultNamingStrategy())
                                        .RenderAsync(OpenApiSpecVersion.OpenApi2_0, OpenApiFormat.Json)
@@ -53,12 +53,12 @@ namespace func_swagger_test
         public async Task<IActionResult> RenderSwaggerUI(
                 [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "swagger/ui")] HttpRequest req)
         {
-            var settings = new AppSettings();
+
             var ui = new SwaggerUI();
-            var result = await ui.AddMetadata(settings.OpenApiInfo)
+            var result = await ui.AddMetadata(_settings.OpenApiInfo)
                                  .AddServer(req, "")
                                  .BuildAsync()
-                                 .RenderAsync("api/swagger.json", settings.SwaggerAuthKey)
+                                 .RenderAsync("api/swagger.json", _settings.SwaggerAuthKey)
                                  .ConfigureAwait(false);
             var response = new ContentResult()
             {

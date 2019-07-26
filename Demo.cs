@@ -16,7 +16,7 @@ namespace func_swagger_test
     {
         public Demo()
         {
-            
+            int three =1;
         }
 
         [FunctionName("Demo")]
