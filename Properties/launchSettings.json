@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "func-swagger-test": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "Key": "Value"
+      }
+    }
+  }
+}

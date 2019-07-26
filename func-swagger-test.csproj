@@ -9,6 +9,7 @@
     <PackageReference Include="Aliencube.AzureFunctions.Extensions.DependencyInjection" Version="2.2.0" />
     <PackageReference Include="Aliencube.AzureFunctions.Extensions.OpenApi" Version="1.5.4" />
     <PackageReference Include="Microsoft.Azure.Functions.Extensions" Version="1.0.0" />
+    <PackageReference Include="Microsoft.Azure.Search" Version="9.0.1" />
     <PackageReference Include="Microsoft.Azure.Services.AppAuthentication" Version="1.2.1" />
     <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.Storage" Version="3.0.6" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.2.0" />

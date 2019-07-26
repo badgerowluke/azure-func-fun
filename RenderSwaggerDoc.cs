@@ -14,8 +14,14 @@ using Newtonsoft.Json.Serialization;
 
 namespace func_swagger_test
 {
+
     public class RenderSwaggerDoc
     {
+        private readonly AppSettings _settings;
+        public RenderSwaggerDoc()
+        {
+            
+        }
         [FunctionName(nameof(RenderSwaggerDoc))]
         [OpenApiIgnore]
         public async Task<IActionResult> RenderSwaggerDocument(

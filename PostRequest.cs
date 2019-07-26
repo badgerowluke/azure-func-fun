@@ -14,4 +14,14 @@ namespace func_swagger_test
         public string OtherStuff { get; set; }
 
     }
+    [JsonObject]
+    [DataContract]
+    public class PostResponse
+    {
+        [DataMember]
+        [MinLength(5)]
+        [MaxLength(35)]
+        public string MoreStuff { get; set; }
+        public string AdditionalStuff { get; set;}
+    }
 }
