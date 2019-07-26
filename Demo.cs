@@ -14,10 +14,7 @@ namespace func_swagger_test
     
     public class Demo
     {
-        public Demo()
-        {
-            int three =1;
-        }
+        public Demo() { }
 
         [FunctionName("Demo")]
         public async Task<IActionResult> SayHello(

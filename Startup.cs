@@ -12,17 +12,13 @@ namespace func_swagger_test
     {
         public override void Configure(IFunctionsHostBuilder builder)
         {
-
-
             var config = new ConfigurationBuilder()
                 .SetBasePath(Environment.CurrentDirectory)
                 .AddJsonFile("appsettings.json", optional:true, reloadOnChange:true)
                 .AddEnvironmentVariables()
                 .Build();
+
             builder.Services.AddSingleton<IAppSettings>(new AppSettings(config));
-
-
-
         }
     }
 } 

@@ -24,7 +24,7 @@
 				"[OpenApiResponseBody(System.Net.HttpStatusCode.NoContent, \"application/json\", typeof(string))]",
 				"[OpenApiResponseBody(System.Net.HttpStatusCode.InternalServerError, \"application/json\", typeof(string))]",
 				"[OpenApiResponseBody(System.Net.HttpStatusCode.BadRequest, \"application/json\", typeof(string))]",
-				"[OpenApiResponseBody(System.Net.HttpStatusCode.OK, \"application/json\", typeof(string))]"
+				"[OpenApiResponseBody(System.Net.HttpStatusCode.OK, \"application/json\", typeof(PostResponse))]"
 			]
 
 		}
