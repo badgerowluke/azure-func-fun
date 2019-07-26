@@ -18,6 +18,12 @@ namespace func_swagger_test
         public Demo() { }
 
         [FunctionName("SayHello")]
+        [OpenApiOperation("SayHello", Summary="your name", Description="just the default function")]
+        [OpenApiParameter("name", In=ParameterLocation.Query, Required=true, Description="we need to know who to say hello too.", Type=typeof(string))]
+        [OpenApiResponseBody(System.Net.HttpStatusCode.NoContent, "application/json", typeof(string))]
+        [OpenApiResponseBody(System.Net.HttpStatusCode.InternalServerError, "application/json", typeof(string))]
+        [OpenApiResponseBody(System.Net.HttpStatusCode.BadRequest, "application/json", typeof(string))]
+        [OpenApiResponseBody(System.Net.HttpStatusCode.OK, "application/json", typeof(string))]
         public async Task<IActionResult> SayHello(
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "SayHello")] HttpRequest req,
             ILogger log)

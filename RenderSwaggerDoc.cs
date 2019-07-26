@@ -50,7 +50,7 @@ namespace func_swagger_test
 
         [FunctionName(nameof(RenderSwaggerUI))]
         [OpenApiIgnore]
-        public async Task<IActionResult> RenderSwaggerUI(
+        public async Task<IActionResult> RenderSwaggerUI(   
                 [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "swagger/ui")] HttpRequest req)
         {
 

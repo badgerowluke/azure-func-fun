@@ -7,3 +7,13 @@
 
 
 [AutoRest](https://github.com/Azure/autorest)
+
+
+```powershell
+autorest 
+--input-file=http://localhost:7071/api/swagger 
+--csharp 
+--output-folder=cshsarp 
+--namespace=Insight.DI.Demo 
+--override-client-name=InsightDigitalInnovation
+```
