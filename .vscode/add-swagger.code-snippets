@@ -19,12 +19,12 @@
 			"prefix": "swag",
 			"body":[
 
-				"[OpenApiOperation(\"Demo\", Summary=\"pasta\", Description=\"just the default function\")]",
-				"[OpenApiParameter(\"email\", Required=true, Description=\"just do it\", Type=typeof(string))]",
+				"[OpenApiOperation(\"SayHello\", Summary=\"your name\", Description=\"just the default function\")]",
+				"[OpenApiParameter(\"name\", In=ParameterLocation.Query, Required=true, Description=\"we need to know who to say hello too.\", Type=typeof(string))]",
 				"[OpenApiResponseBody(System.Net.HttpStatusCode.NoContent, \"application/json\", typeof(string))]",
 				"[OpenApiResponseBody(System.Net.HttpStatusCode.InternalServerError, \"application/json\", typeof(string))]",
 				"[OpenApiResponseBody(System.Net.HttpStatusCode.BadRequest, \"application/json\", typeof(string))]",
-				"[OpenApiResponseBody(System.Net.HttpStatusCode.OK, \"application/json\", typeof(PostResponse))]"
+				"[OpenApiResponseBody(System.Net.HttpStatusCode.OK, \"application/json\", typeof(PostResponse))]",
 			]
 
 		}

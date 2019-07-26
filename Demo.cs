@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using Aliencube.AzureFunctions.Extensions.OpenApi.Attributes;
+using Microsoft.OpenApi.Models;
 
 namespace func_swagger_test
 {
@@ -16,9 +17,9 @@ namespace func_swagger_test
     {
         public Demo() { }
 
-        [FunctionName("Demo")]
+        [FunctionName("SayHello")]
         public async Task<IActionResult> SayHello(
-            [HttpTrigger(AuthorizationLevel.Function, "get", Route = null)] HttpRequest req,
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "SayHello")] HttpRequest req,
             ILogger log)
         {
             log.LogInformation("C# HTTP trigger function processed a request.");
